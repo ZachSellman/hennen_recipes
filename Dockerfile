@@ -1,9 +1,9 @@
+
 FROM python:3.11-slim AS builder
 
 # This is neccesary step for psycopg2 to function in slim image
 RUN apt-get update && \
-    apt-get install -y gcc && \
-    apt-get install -y default-libmysqlclient-dev
+    apt-get install -y libpq-dev gcc
 
 # Create virtual environment
 RUN python -m venv /opt/venv
@@ -18,8 +18,8 @@ RUN pip install -r requirements.txt
 FROM python:3.11-slim
 
 RUN apt-get update && \
-    apt-get install -y gcc && \
-    apt-get install -y default-libmysqlclient-dev
+    apt-get install -y libpq-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 # Get venv from bulider stage
 COPY --from=builder /opt/venv /opt/venv

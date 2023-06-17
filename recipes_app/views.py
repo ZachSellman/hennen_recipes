@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, "recipes_feed/index.html")
+    return render(request, "recipes_app/index.html")

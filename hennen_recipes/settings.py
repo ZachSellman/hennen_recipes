@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "recipes_feed",
+    "recipes_app",
 ]
 
 MIDDLEWARE = [
@@ -81,11 +81,11 @@ WSGI_APPLICATION = "hennen_recipes.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": getenv("MYSQL_DATABASE"),
-        "USER": getenv("MYSQL_USER"),
-        "PASSWORD": getenv("MYSQL_PASSWORD"),
-        "HOST": getenv("HOST"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": getenv("POSTGRES_DB"),
+        "USER": getenv("POSTGRES_USER"),
+        "PASSWORD": getenv("POSTGRES_PASSWORD"),
+        "HOST": "172.19.0.2",
         "PORT": getenv("PORT"),
     }
 }

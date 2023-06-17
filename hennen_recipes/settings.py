@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from os import path, getenv
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-wzlbc_u8r=!@(-)&kk!hhm_+9(r4)*y2yr4c%7%gerwxb2&^mw"
+SECRET_KEY = getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv("DEBUG")
 
 ALLOWED_HOSTS = []
 
@@ -77,11 +82,11 @@ WSGI_APPLICATION = "hennen_recipes.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "my_database",
-        "USER": "root",
-        "PASSWORD": "change-me",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+        "NAME": getenv("MYSQL_DATABASE"),
+        "USER": getenv("MYSQL_USER"),
+        "PASSWORD": getenv("MYSQL_PASSWORD"),
+        "HOST": getenv("HOST"),
+        "PORT": getenv("PORT"),
     }
 }
 
@@ -121,6 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "uploads"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

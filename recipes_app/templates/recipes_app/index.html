@@ -1,3 +1,10 @@
-<!DOCTYPE html>
+{% extends "recipes_app/base.html" %}
+{% block content %}
+    <h1> This is the content inside the "content" block for index.html.</h1>
+{% endblock content %}
 
-<h1>This is the Home Page!</h1>
+{% block tester %}
+    <h1>This is the content inside the "tester" block.</h1>
+{% endblock tester %}
+
+<footer>This is the footer!</footer>

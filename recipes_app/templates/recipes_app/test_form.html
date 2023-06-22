@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+
+<h1>This is a basic form page.</h1>
+
+<form method="post" action="/recipes_app/{{recipes.id}}/edit" enctype="multipart/form-data" {% csrf token %}
+    {{profile_edit_form}} <input type="submit" value="Save Changes" />
+</form>
